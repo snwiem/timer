@@ -3,13 +3,11 @@ package org.syracus.timerws.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.web.util.DefaultUriBuilderFactory;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ValueRange;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class DatevWorkModelServiceImpl implements WorkModelService {
