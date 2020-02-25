@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         JAR_FILE: "target/timer-fe-0.0.1-SNAPSHOT.jar"
+    image: syracus/timer-fe:latest
     ports:
       - "8080:8080"
     links:
@@ -16,5 +17,6 @@ services:
       dockerfile: Dockerfile
       args:
         JAR_FILE: "target/timer-ws-0.0.1-SNAPSHOT.jar"
+    image: syracus/timer-ws:latest
     ports:
       - "8090:8090"

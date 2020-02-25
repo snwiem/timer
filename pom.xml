@@ -10,6 +10,8 @@
 
     <properties>
         <docker-maven-version>1.4.13</docker-maven-version>
+
+        <docker-repository>syracus</docker-repository>
     </properties>
 
     <build>
