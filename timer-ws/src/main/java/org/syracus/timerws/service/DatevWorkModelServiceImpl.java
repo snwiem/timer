@@ -90,6 +90,7 @@ public class DatevWorkModelServiceImpl implements WorkModelService {
 
     private Duration getBestAttendance(Duration currentAttendance) {
         long attendanceInMinutes = currentAttendance.toMinutes();
+        LOG.debug("[getBestAttendance] currentAttendance = {}", currentAttendance);
         Duration bestSlot = null;
         if (ValueRange.of(Duration.ZERO.toMinutes(), Duration.parse("PT2H").toMinutes()).isValidValue(attendanceInMinutes)) {
             bestSlot = Duration.parse("PT2H");

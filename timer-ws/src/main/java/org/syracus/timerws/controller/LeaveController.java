@@ -25,6 +25,7 @@ public class LeaveController {
 
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public LeaveData leavePost(@RequestBody LeaveData input) {
+        LOG.debug("Input = {}", input);
         LocalDateTime arrivalDateTime = LocalDateTime.now().with(input.getArrival().withSecond(0).withNano(0));
         LocalDateTime leaveDateTime = LocalDateTime.now().with(Optional.ofNullable(input.getLeave()).orElse(LocalTime.now()).withSecond(0).withNano(0));
         Optional<Duration> saldo = input.getSaldo();

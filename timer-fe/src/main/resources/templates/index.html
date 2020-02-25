@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="h-100">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- include css in the header -->
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/default.css}"/>
+
+    <title>Adding Static Resources (css, JavaScript, Images) to Thymeleaf</title>
+
+
+</head>
+<body class="d-flex flex-column h-100">
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+        <div class="row">
+        <form id="myForm">
+            <div class="form-group">
+                <label for="arrival">Arrival:</label>
+                <input type="arrival" class="form-control" id="arrival" placeholder="HH:mm" aria-describedby="arrivalHelp">
+                <small id="arrivalHelp" class="form-text text-muted">Enter your arrival time.</small>
+            </div>
+            <div class="form-group">
+                <label for="leave">Leave:</label>
+                <input type="leave" class="form-control" id="leave" placeholder="HH:mm" aria-describedby="leaveHelp">
+                <small id="leaveHelp" class="form-text text-muted">Enter your leave time. The current time will be used if empty.</small>
+            </div>
+            <div class="form-group">
+                <label for="saldo">Saldo:</label>
+                <input type="saldo" class="form-control" id="saldo" placeholder="PT[##H][##M]" aria-describedby="saldoHelp">
+                <small id="saldoHelp" class="form-text text-muted">Enter your current balance saldo.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="resetButton" type="reset" class="btn">Reset</button>
+        </form>
+        </div>
+        <div class="row">
+            <h1>Result table</h1>
+
+            <table class="table" id="resultTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Arrival</th>
+                        <th scope="col">Leave</th>
+                        <th scope="col">Earliest</th>
+                        <th scope="col">Latest</th>
+                        <th scope="col">Regular</th>
+                        <th scope="col">Saldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+</footer>
+
+<!-- include javascript in the footer -->
+<script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<!--<script type="text/javascript" th:src="@{/webjars/popper.js/1.14.3/popper.min.js}"></script>-->
+
+<script type="text/javascript" th:src="@{/js/timerfe.js}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#myForm').submit(function() {
+
+            var data = {
+                arrival: $('#arrival').val(),
+                leave: $('#leave').val(),
+                saldo: $('#saldo').val()
+            };
+            console.log(data);
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: 'POST',
+                url: 'http://localhost:8090/leave/',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function(result) {
+                    console.log(JSON.stringify(result));
+                    $('#resultTable > tbody')
+                        .prepend('<tr/>')
+                        .children('tr:first')
+                        .append('<td>'+result.arrival+'</td><td>'+result.leave+'</td><td>'+result.earliest+'</td><td>'+result.latest+'</td><td>'+result.regular+'</td><td>'+result.saldo+'</td>');
+                }
+            });
+            return false;
+        });
+        $('#resetButton').click(function() {
+           $('#resultTable > tbody').empty();
+        });
+    });
+
+</script>
+</body>
+
+</html>

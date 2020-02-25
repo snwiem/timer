@@ -8,5 +8,17 @@
     <artifactId>timer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <docker-maven-version>1.4.13</docker-maven-version>
+    </properties>
 
+    <build>
+        <extensions>
+            <extension>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-extension</artifactId>
+                <version>1.4.13</version>
+            </extension>
+        </extensions>
+    </build>
 </project>
