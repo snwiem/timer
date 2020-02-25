@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/default.css}"/>
 
-    <title>Adding Static Resources (css, JavaScript, Images) to Thymeleaf</title>
+    <title>DATEV Leave-Calculator</title>
 
 
 </head>
@@ -18,25 +18,25 @@
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <div class="row">
-        <form id="myForm">
-            <div class="form-group">
-                <label for="arrival">Arrival:</label>
-                <input type="arrival" class="form-control" id="arrival" placeholder="HH:mm" aria-describedby="arrivalHelp">
-                <small id="arrivalHelp" class="form-text text-muted">Enter your arrival time.</small>
-            </div>
-            <div class="form-group">
-                <label for="leave">Leave:</label>
-                <input type="leave" class="form-control" id="leave" placeholder="HH:mm" aria-describedby="leaveHelp">
-                <small id="leaveHelp" class="form-text text-muted">Enter your leave time. The current time will be used if empty.</small>
-            </div>
-            <div class="form-group">
-                <label for="saldo">Saldo:</label>
-                <input type="saldo" class="form-control" id="saldo" placeholder="PT[##H][##M]" aria-describedby="saldoHelp">
-                <small id="saldoHelp" class="form-text text-muted">Enter your current balance saldo.</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button id="resetButton" type="reset" class="btn">Reset</button>
-        </form>
+            <form id="myForm">
+                <div class="form-group">
+                    <label for="arrival">Arrival:</label>
+                    <input type="arrival" class="form-control" id="arrival" placeholder="HH:mm" aria-describedby="arrivalHelp">
+                    <small id="arrivalHelp" class="form-text text-muted">Enter your arrival time.</small>
+                </div>
+                <div class="form-group">
+                    <label for="leave">Leave:</label>
+                    <input type="leave" class="form-control" id="leave" placeholder="HH:mm" aria-describedby="leaveHelp">
+                    <small id="leaveHelp" class="form-text text-muted">Enter your leave time. The current time will be used if empty.</small>
+                </div>
+                <div class="form-group">
+                    <label for="saldo">Saldo:</label>
+                    <input type="saldo" class="form-control" id="saldo" placeholder="PT[##H][##M]" aria-describedby="saldoHelp">
+                    <small id="saldoHelp" class="form-text text-muted">Enter your current balance saldo.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button id="resetButton" type="reset" class="btn">Reset</button>
+            </form>
         </div>
         <div class="row">
             <h1>Result table</h1>
